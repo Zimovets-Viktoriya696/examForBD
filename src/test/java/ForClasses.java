@@ -2,20 +2,26 @@
  * Created by Vika on 22.01.17.
  */
 public class ForClasses {
-    float a;
-    float b;
-    float c;
-    InnerClass innerClass;
-    StaticNestedClass staticNestedClass;
+   private float a;
+   private float b;
+   private float c;
+    private StaticNestedClass staticNestedClass;
 
-    ForClasses (float a, float b, float c){
+
+
+    /**
+     * @param a
+     * @param b
+     * @param c
+     */
+    private ForClasses (float a, float b, float c){
         this.a = a;
         this.b = b;
         this.c = c;
         }
 
-    public StaticNestedClass getSolution (){
-         innerClass = new InnerClass();
+    private StaticNestedClass getSolution (){
+        InnerClass innerClass = new InnerClass();
          if(innerClass.GetDiskriminant()>0){
               float x1 = (float) (((-b)-Math.sqrt(innerClass.GetDiskriminant()))/2*a);
               float x2 = (float) (((-b)+Math.sqrt(innerClass.GetDiskriminant()))/2*a);
@@ -34,8 +40,8 @@ public class ForClasses {
 
 
 
-    class InnerClass {
-         public float GetDiskriminant(){
+   private class InnerClass {
+         private float GetDiskriminant(){
              return (b*b)-(4*a*c);
         }
     }
@@ -46,15 +52,15 @@ public class ForClasses {
          static float x;
 
         StaticNestedClass(float x1, float x2){
-            this.x1 = x1;
-            this.x2 = x2;
+            StaticNestedClass.x1 = x1;
+            StaticNestedClass.x2 = x2;
         }
 
-        public StaticNestedClass(float x) {
-            this.x = x;
+        private StaticNestedClass(float x) {
+            StaticNestedClass.x = x;
         }
 
-        public static void print(){
+        private static void print(){
             System.out.println(StaticNestedClass.x1 + " x1");
             System.out.println(StaticNestedClass.x2 + " x2");
             System.out.println(StaticNestedClass.x + " x");
@@ -64,8 +70,8 @@ public class ForClasses {
     public static void main(String[] args) {
 
         ForClasses ob = new ForClasses(1f, 3f, 1f);
-        StaticNestedClass st = ob.getSolution();
-        st.print();
+        ob.getSolution();
+        StaticNestedClass.print();
         InnerClass innerClass = ob.new InnerClass();
         System.out.println(innerClass.GetDiskriminant());
 
